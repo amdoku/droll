@@ -6,6 +6,8 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: RelWithDebInfo
 
+  
+
 jobs:
   build:
 
@@ -29,11 +31,19 @@ jobs:
         python3 -m pip install conan
         source ~/.profile
 
+    - name: Install g++-10
+      shell: bash
+      run: |
+        sudo apt update && sudo apt install gcc-10 g++-10 -y
+
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       shell: bash
       working-directory: ${{runner.workspace}}/build
+      env:
+        CC: gcc-10
+        CXX: g++-10
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
