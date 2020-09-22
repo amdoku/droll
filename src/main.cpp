@@ -4,6 +4,7 @@
 
 #include <spdlog/spdlog.h>
 #include <docopt/docopt.h>
+#include <boost/spirit/home/x3.hpp>
 
 #include "util/args.h"
 
