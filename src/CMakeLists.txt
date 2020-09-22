@@ -1,5 +1,5 @@
 # Generic test that uses conan libs
-add_executable(droll main.cpp)
+add_executable(droll main.cpp util/args.h util/args.cpp)
 target_link_libraries(
   droll
   PRIVATE project_options
